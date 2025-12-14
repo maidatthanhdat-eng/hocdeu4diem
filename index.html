@@ -45,7 +45,7 @@
     }
 
   /* TUYẾT */
-.snow{
+#snow-container{
   position: fixed;
   top: 0;
   left: 0;
@@ -53,24 +53,22 @@
   height: 100%;
   pointer-events: none;
   z-index: 9999;
-
-  background-image:
-    radial-gradient(3px 3px at 20px 30px, white, transparent),
-    radial-gradient(3px 3px at 60px 90px, white, transparent),
-    radial-gradient(2.5px 2.5px at 100px 40px, white, transparent),
-    radial-gradient(3px 3px at 140px 120px, white, transparent),
-    radial-gradient(2.5px 2.5px at 180px 60px, white, transparent);
-
-  background-size: 220px 220px;
-  animation: snow 10s linear infinite;
 }
 
-@keyframes snow{
-  0%{
-    background-position: 0 0;
-  }
-  100%{
-    background-position: 0 200px;
+.snowflake{
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 16px;
+  user-select: none;
+  opacity: 0.9;
+  animation-name: fall;
+  animation-timing-function: linear;
+}
+
+@keyframes fall{
+  to{
+    transform: translateY(110vh) translateX(var(--drift));
   }
 }
 
@@ -95,7 +93,34 @@
 </head>
 
 <body>
-  <div class="snow"></div>
+  
+  <div id="snow-container"></div>
+  
+  <script>
+  const snowContainer = document.getElementById("snow-container");
+
+  function createSnow(){
+    const snow = document.createElement("div");
+    snow.className = "snowflake";
+    snow.innerHTML = "❄";
+
+    const size = Math.random() * 10 + 14; // to nhỏ random
+    snow.style.fontSize = size + "px";
+
+    snow.style.left = Math.random() * window.innerWidth + "px";
+    snow.style.animationDuration = Math.random() * 5 + 6 + "s";
+    snow.style.setProperty("--drift", (Math.random() * 100 - 50) + "px");
+
+    snowContainer.appendChild(snow);
+
+    setTimeout(() => {
+      snow.remove();
+    }, 12000);
+  }
+
+  setInterval(createSnow, 200);
+</script>
+
   <div class="content">
     <h1>Hello, welcome to tráy ghi class!</h1>
     <p>Thầy giáo tráy ghi cùng kinh nghiệm dày dặn chỉ bảo các hs 2k11 học đều 4 điểm.</p>
