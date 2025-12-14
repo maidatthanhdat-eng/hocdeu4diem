@@ -79,28 +79,6 @@
   z-index: 9999;
 }
 
-    /* POPUP NỀN */
-#quizPopup{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 20000;
-}
-
-/* KHUNG GIỮA */
-.popup-box{
-  background: rgba(0,0,0,0.55);
-  border: 2px solid white;
-  border-radius: 18px;
-  padding: 40px 30px;
-  text-align: center;
-  width: 80%;
-  max-width: 420px;
-}
-
 /* CHỮ TO */
 .popup-text{
   font-size: 26px;
@@ -126,10 +104,6 @@
   cursor: pointer;
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-    
-#closePopup{
-  margin-top: 18px;   /* chỉnh 15–25px tùy ý */
 }
 
 /* HOVER TO RA */
@@ -284,20 +258,6 @@
 
   draw();
 })();
-
-window.onload = () => {
-  const registerBtn = document.querySelector('.register-btn');
-  const popup = document.getElementById('quizPopup');
-  const closePopup = document.getElementById('closePopup');
-
-  registerBtn.onclick = () => {
-    popup.style.display = 'flex';
-  };
-
-  closePopup.onclick = () => {
-    popup.style.display = 'none';
-  };
-};
 
 function goConfirm(){
   document.getElementById("homePage").style.display = "none";
