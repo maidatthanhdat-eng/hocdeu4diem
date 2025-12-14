@@ -252,9 +252,14 @@
 window.onload = () => {
   const registerBtn = document.querySelector('.register-btn');
   const popup = document.getElementById('quizPopup');
+  const closePopup = document.getElementById('closePopup');
 
   registerBtn.onclick = () => {
     popup.style.display = 'flex';
+  };
+
+  closePopup.onclick = () => {
+    popup.style.display = 'none';
   };
 };
    
@@ -280,6 +285,7 @@ window.onload = () => {
     </div>
 
     <div class="continue-btn">Tiếp tục</div>
+    <div class="continue-btn" id="closePopup">Quay lại</div>
     </div>
     </div>
 
