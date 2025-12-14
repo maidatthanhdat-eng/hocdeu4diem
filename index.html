@@ -79,6 +79,61 @@
   z-index: 9999;
 }
 
+    /* POPUP NỀN */
+#quizPopup{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+}
+
+/* KHUNG GIỮA */
+.popup-box{
+  background: rgba(0,0,0,0.55);
+  border: 2px solid white;
+  border-radius: 18px;
+  padding: 40px 30px;
+  text-align: center;
+  width: 80%;
+  max-width: 420px;
+}
+
+/* CHỮ TO */
+.popup-text{
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+/* NÚT TIẾP TỤC */
+.continue-btn{
+  width: 260px;
+  margin: 0 auto;
+  padding: 14px 0;
+
+  background: rgba(255, 60, 60, 0.65);
+  border: 2px solid white;
+  border-radius: 14px;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* HOVER TO RA */
+.continue-btn:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(255,60,60,0.9);
+}
+
 /* NÚT ĐĂNG KÝ */
 .register-btn{
   display: block;
@@ -128,7 +183,7 @@
   </style>
 </head>
 
-<body>
+<body> 
   
   <canvas id="snow"></canvas>
   
@@ -193,6 +248,14 @@
 
   draw();
 })();
+
+   const registerBtn = document.querySelector('.register-btn');
+  const popup = document.getElementById('quizPopup');
+
+  registerBtn.onclick = () => {
+    popup.style.display = 'flex';
+  };
+   
 </script>
 
   <div class="content">
@@ -206,6 +269,18 @@
     <div class="info-box">Teacher Tráy</div>
     <div class="info-box hotline">Hotline: 036-067-1818</div>
     <div class="register-btn">Đăng ký</div>
+      <!-- POPUP KIỂM TRA -->
+    <div id="quizPopup">
+    <div class="popup-box">
+    <div class="popup-text">
+      Bạn phải trả lời 5 câu hỏi<br>
+      để kiểm tra thực lực!
+    </div>
+
+    <div class="continue-btn">Tiếp tục</div>
+    </div>
+    </div>
+
   </div>
 </body>
 </html>
