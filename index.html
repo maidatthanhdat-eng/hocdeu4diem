@@ -249,12 +249,14 @@
   draw();
 })();
 
-   const registerBtn = document.querySelector('.register-btn');
+window.onload = () => {
+  const registerBtn = document.querySelector('.register-btn');
   const popup = document.getElementById('quizPopup');
 
   registerBtn.onclick = () => {
     popup.style.display = 'flex';
   };
+};
    
 </script>
 
