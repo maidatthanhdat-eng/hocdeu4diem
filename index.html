@@ -16,7 +16,6 @@
       color:white;
       text-align:center;
 
-      /* background gốc */
       background: url("background.jpg") center/cover no-repeat;
 
       display:flex;
@@ -24,7 +23,7 @@
       align-items:center;
     }
 
-    /* LỚP ĐEN ĐEN TO ĐÙNG */
+    /* lớp đen nhẹ */
     body::before{
       content:"";
       position:fixed;
@@ -33,7 +32,6 @@
       z-index:0;
     }
 
-    /* nội dung nổi lên trên lớp đen */
     .content{
       position:relative;
       z-index:1;
@@ -42,7 +40,25 @@
 
     img{
       width:300px;
-      border-radius:10px;
+      border-radius:12px;
+      margin-top:15px;
+    }
+
+    /* KHUNG CHỮ */
+    .info-box{
+      margin-top:12px;
+      padding:10px 18px;
+      background: rgba(0,0,0,0.55);
+      border-radius:12px;
+      font-size:18px;
+      font-weight:bold;
+    }
+
+    .hotline{
+      margin-top:8px;
+      background: rgba(255,255,255,0.85);
+      color:black;
+      border:2px solid red;
     }
   </style>
 </head>
@@ -52,7 +68,12 @@
     <h1>Hello, welcome to tráy ghi class!</h1>
     <p>Thầy giáo tráy ghi cùng kinh nghiệm dày dặn chỉ bảo các hs 2k11 học đều 4 điểm.</p>
     <p>Ở nơi của thầy, học tráy và có tuyết.</p>
+
     <img src="santachuoibi.jpg" alt="Image">
+
+    <!-- 2 KHUNG CHỮ -->
+    <div class="info-box">Teacher Tráy</div>
+    <div class="info-box hotline">Hotline: 036-067-1818</div>
   </div>
 </body>
 </html>
