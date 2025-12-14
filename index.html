@@ -268,8 +268,10 @@ window.onload = () => {
 };
    
 </script>
-
   <div class="content">
+
+  <div id="homePage">
+      
     <h1>Hello, welcome to tráy ghi class!</h1>
     <p>Thầy giáo tráy ghi cùng kinh nghiệm dày dặn chỉ bảo các hs 2k11 học đều 4 điểm.</p>
     <p>Ở nơi của thầy, học tráy và có tuyết.</p>
@@ -279,21 +281,21 @@ window.onload = () => {
 
     <div class="info-box">Teacher Tráy</div>
     <div class="info-box hotline">Hotline: 036-067-1818</div>
-    <div class="register-btn">Đăng ký</div>
-      <!-- POPUP KIỂM TRA -->
-    <div id="quizPopup">
-    <div class="popup-box">
-    <div class="popup-text">
+    <div class="register-btn" onclick="window.location.href='confirm.html'">
+    Đăng ký
+      
+  </div>
+
+  <!-- TRANG XÁC NHẬN -->
+  <div id="confirmPage" style="display:none">
+    <div class="notice">
       Bạn phải trả lời 5 câu hỏi<br>
       để kiểm tra thực lực!
     </div>
 
-    <div class="popup-buttons">
-    <div class="continue-btn">Tiếp tục</div>
-    <div class="continue-btn" id="closePopup">Quay lại</div>
-    </div>
-    </div>
-    </div>
+    <div class="btn continue">Tiếp tục</div>
+    <div class="btn back" onclick="goBack()">Quay lại</div>
+  </div>
 
   </div>
 </body>
