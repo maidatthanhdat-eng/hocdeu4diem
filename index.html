@@ -72,6 +72,13 @@
   }
 }
 
+#snow{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+    
 /* KHUNG CHỮ */
 .info-box,
 .hotline{
@@ -94,31 +101,67 @@
 
 <body>
   
-  <div id="snow-container"></div>
+  <canvas id="snow"></canvas>
   
   <script>
-  const snowContainer = document.getElementById("snow-container");
+(function(){
+  const canvas = document.getElementById("snow");
+  const ctx = canvas.getContext("2d");
 
-  function createSnow(){
-    const snow = document.createElement("div");
-    snow.className = "snowflake";
-    snow.innerHTML = "❄";
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
 
-    const size = Math.random() * 10 + 14; // to nhỏ random
-    snow.style.fontSize = size + "px";
+  const flakes = [];
+  const FLAKE_COUNT = 220;
 
-    snow.style.left = Math.random() * window.innerWidth + "px";
-    snow.style.animationDuration = Math.random() * 5 + 6 + "s";
-    snow.style.setProperty("--drift", (Math.random() * 100 - 50) + "px");
-
-    snowContainer.appendChild(snow);
-
-    setTimeout(() => {
-      snow.remove();
-    }, 12000);
+  for(let i=0;i<FLAKE_COUNT;i++){
+    flakes.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 3 + 2,
+      speedY: Math.random() * 1.5 + 0.6,
+      speedX: Math.random() * 1 - 0.5,
+      swing: Math.random() * 0.03 + 0.01,
+      angle: Math.random() * Math.PI * 2
+    });
   }
 
-  setInterval(createSnow, 200);
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+
+    for(const f of flakes){
+      ctx.moveTo(f.x, f.y);
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI*2);
+    }
+
+    ctx.fill();
+    update();
+    requestAnimationFrame(draw);
+  }
+
+  function update(){
+    for(const f of flakes){
+      f.y += f.speedY;
+      f.angle += f.swing;
+      f.x += Math.sin(f.angle) + f.speedX;
+
+      if(f.y > canvas.height){
+        f.y = -10;
+        f.x = Math.random() * canvas.width;
+      }
+      if(f.x > canvas.width) f.x = 0;
+      if(f.x < 0) f.x = canvas.width;
+    }
+  }
+
+  draw();
+})();
 </script>
 
   <div class="content">
