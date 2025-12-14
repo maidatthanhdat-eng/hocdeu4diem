@@ -44,34 +44,6 @@
       margin-top:15px;
     }
 
-  /* TUYẾT */
-#snow-container{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-.snowflake{
-  position: absolute;
-  top: -10px;
-  color: white;
-  font-size: 16px;
-  user-select: none;
-  opacity: 0.9;
-  animation-name: fall;
-  animation-timing-function: linear;
-}
-
-@keyframes fall{
-  to{
-    transform: translateY(110vh) translateX(var(--drift));
-  }
-}
-
 #snow{
   position: fixed;
   inset: 0;
